@@ -4,7 +4,6 @@ import { sourcebitDataClient } from 'sourcebit-target-next'
 export async function getStaticProps({ params }) {
     const pagePath = '/blog/' + params.slug;
     const props = await sourcebitDataClient.getStaticPropsForPageAtPath(pagePath);
-    console.log(props.page.teaser[0].children);
     return { props };
 }
 
@@ -17,15 +16,14 @@ export async function getStaticPaths() {
 }
 
 export default function BlogPost({ page }) {
-    const richText = page.teaser.map(block => {
-        if (block.__metadata.modelName == "block")
+    const richText = page.teaser.content.map(block => {
+        if (block.nodeType == "paragraph")
         {
-            return block.children.map(c => {
-                if (c.__metadata.modelName == "span")
-                {
-                    return <p>{c.text}</p>
-                }
-            });
+			return <p>{block.content.map(b => {
+				if (b.nodeType == "text"){
+					return b.value;
+				}
+			})}</p>
         }
     });
 

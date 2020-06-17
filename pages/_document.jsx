@@ -18,7 +18,7 @@ class MyDocument extends Document {
                         <header id="header">
                             <div className="inner">
                                     <a href="/" className="logo">
-                                        <span className="symbol"><img src="images/logo.svg" alt="" /></span><span className="title">Phantom</span>
+                                        <span className="symbol"><img src="/images/logo.svg" alt="" /></span><span className="title">Phantom</span>
                                     </a>
                                     <nav>
                                         <ul>
