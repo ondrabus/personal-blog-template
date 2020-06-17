@@ -16,22 +16,11 @@ export async function getStaticPaths() {
 }
 
 export default function BlogPost({ page }) {
-    const richText = page.teaser.content.map(block => {
-        if (block.nodeType == "paragraph")
-        {
-			return <p>{block.content.map(b => {
-				if (b.nodeType == "text"){
-					return b.value;
-				}
-			})}</p>
-        }
-    });
-
     return <div class="inner">
                 <h1>{page.title}</h1>
                 <span className="image main">
-                    <img src={page.image.url ? page.image.url : page.imageUrl} alt="" />
+                    <img src={page.image ? page.image : page.image_url} alt="" />
                 </span>
-                {richText}
+				<div dangerouslySetInnerHTML={{__html: page.teaser}}></div>
             </div>
 }

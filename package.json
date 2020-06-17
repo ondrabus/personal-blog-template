@@ -22,5 +22,13 @@
   "devDependencies": {},
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ondrabus/personal-blog-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ondrabus/personal-blog-template/issues"
+  },
+  "homepage": "https://github.com/ondrabus/personal-blog-template#readme"
 }

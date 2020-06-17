@@ -9,11 +9,11 @@ export async function getStaticProps({params}){
 
 
 export default function Home({ blogPosts }) {
-  const list = blogPosts.map((post, index) => {
+  const list = blogPosts.sort((a,b) => (new Date(a.page.published) < new Date(b.page.published)) ? 1 : -1).map((post, index) => {
     const published = new Date(post.page.published);
     return (<article className={`style${index}`} key={post.path}>
     <span className="image">
-      <img src={post.page.image ? post.page.image.url : post.page.imageUrl} />
+      <img src={post.page.image ? post.page.image : post.page.image_url} />
     </span>
     <a href={post.path}>
       <h2>{post.page.title}</h2>
